@@ -1,0 +1,10 @@
+# Render Blueprint for CloudDeploymentDemo
+services:
+  - type: web
+    name: cloud-deployment-demo
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
