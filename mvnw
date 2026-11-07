@@ -28,4 +28,3 @@ exec "$JAVACMD" \
   -Dmaven.multiModuleProjectDirectory="$MAVEN_PROJECTBASEDIR" \
   -classpath "$WRAPPER_JAR" \
   "$WRAPPER_LAUNCHER" "$@"
-

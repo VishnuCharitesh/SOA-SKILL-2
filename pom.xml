@@ -27,9 +27,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <!-- Spring Boot Starter Test for unit and integration testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>app</finalName>
         <plugins>
             <!-- Spring Boot Maven Plugin to create an executable standalone JAR -->
             <plugin>
@@ -39,4 +47,3 @@
         </plugins>
     </build>
 </project>
-

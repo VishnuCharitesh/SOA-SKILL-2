@@ -8,7 +8,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# Build executable JAR without running tests for faster build
+# Build executable JAR
 RUN mvn clean package -DskipTests
 
 # -------------------------------------------------------------
@@ -18,11 +18,10 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # Copy the built jar from build stage
-COPY --from=build /app/target/*.jar app.jar
+COPY --from=build /app/target/app.jar app.jar
 
 # Render exposes the port dynamically via $PORT (defaults to 8080)
 EXPOSE 8080
 
-# Run Spring Boot application
-ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
-
+# Run Spring Boot with optimized JVM memory settings for Render Free tier (512MB RAM)
+ENTRYPOINT ["sh", "-c", "java -XX:+UseSerialGC -Xmx384m -Dserver.port=${PORT:-8080} -jar app.jar"]

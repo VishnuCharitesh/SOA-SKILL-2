@@ -46,3 +46,4 @@ class CloudDeploymentDemoApplicationTests {
                 .andExpect(jsonPath("$.status").value("Active"));
     }
 }
+
